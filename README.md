@@ -8,15 +8,15 @@ Quizzy este un joc de trivia captivant, conceput pentru a-ți testa și îmbogă
 ## Obiectivele jocului Quizzy:
 
 * Testarea și dezvoltarea cunoștințelor de cultură generală
-  Scopul principal al jocului este să te ajute să descoperi și să aprofundezi informații dintr-o varietate de domenii, îmbogățindu-ți astfel cunoștințele și stimulându-ți curiozitatea.
+    - Scopul principal al jocului este să te ajute să descoperi și să aprofundezi informații dintr-o varietate de domenii, îmbogățindu-ți astfel cunoștințele și stimulându-ți curiozitatea.
 * Încurajarea învățării prin distracție
-  Quizzy transformă învățarea într-o experiență captivantă și plăcută, demonstrând că procesul de acumulare a cunoștințelor poate fi la fel de distractiv precum un joc interactiv.
+    - Quizzy transformă învățarea într-o experiență captivantă și plăcută, demonstrând că procesul de acumulare a cunoștințelor poate fi la fel de distractiv precum un joc interactiv.
 * Dezvoltarea spiritului de competiție
-  Prin posibilitatea de a juca împotriva prietenilor sau a altor utilizatori, Quizzy îți oferă o platformă pentru competiție prietenoasă, în care fiecare răspuns corect aduce un plus de satisfacție și motivație.
+    - Prin posibilitatea de a juca împotriva prietenilor sau a altor utilizatori, Quizzy îți oferă o platformă pentru competiție prietenoasă, în care fiecare răspuns corect aduce un plus de satisfacție și motivație.
 * Îmbunătățirea reacției și a gândirii rapide
-  Timpul limitat pentru răspunsuri stimulează gândirea rapidă și deciziile corecte sub presiune, dezvoltând astfel abilități cognitive utile în diverse contexte.
+    - Timpul limitat pentru răspunsuri stimulează gândirea rapidă și deciziile corecte sub presiune, dezvoltând astfel abilități cognitive utile în diverse contexte.
 * Promovarea interacțiunii sociale și a colaborării
-  Jocul creează o oportunitate de socializare și colaborare prin opțiunile de joc în echipă sau provocări individuale, construind astfel o comunitate în jurul pasiunii pentru cunoaștere.
+    - Jocul creează o oportunitate de socializare și colaborare prin opțiunile de joc în echipă sau provocări individuale, construind astfel o comunitate în jurul pasiunii pentru cunoaștere.
 
 ## Arhitectura
 ![](https://github.com/user-attachments/assets/3d0b1ded-d7e6-42a3-8f7d-8f14135cc875)
