@@ -24,21 +24,21 @@ Quizzy este un joc de trivia captivant, conceput pentru a-ți testa și îmbogă
 ## Funcționalități
 
 * Autentificare
-      - Aplicația permite autentificarea utilizatorilor printr-un ecran de login, unde aceștia își introduc numele de utilizator și parola.
+    - Aplicația permite autentificarea utilizatorilor printr-un ecran de login, unde aceștia își introduc numele de utilizator și parola.
 * Meniu Principal
-      -  După autentificare, utilizatorul ajunge în meniul principal, care oferă următoarele opțiuni:
-          - Joacă: Inițiază o sesiune de trivia.
-          - Setări: Permite personalizarea volumului și a altor setări de joc.
-          - Scoruri: Afișează topul celor mai bune scoruri obținute de utilizatori.
-          - Ieșire: Oprește aplicația.
+    - După autentificare, utilizatorul ajunge în meniul principal, care oferă următoarele opțiuni:
+      - Joacă: Inițiază o sesiune de trivia.
+      - Setări: Permite personalizarea volumului și a altor setări de joc.
+      - Scoruri: Afișează topul celor mai bune scoruri obținute de utilizatori.
+      - Ieșire: Oprește aplicația.
 * Modul Joc (Joacă)
-      - În modul de joc, utilizatorii își aleg categoria de întrebări preferată și răspund la întrebări de tip trivia.
+    - În modul de joc, utilizatorii își aleg categoria de întrebări preferată și răspund la întrebări de tip trivia.
 * Setări
-      - Permite ajustarea volumului aplicației.
+    - Permite ajustarea volumului aplicației.
 * Clasament Scoruri (Scoruri)
-      - Afișează un top 10 al celor mai bune scoruri obținute în joc.
+    - Afișează un top 10 al celor mai bune scoruri obținute în joc.
 * Ieșire
-      - Oprește aplicația în orice moment.
+    - Oprește aplicația în orice moment.
 
 ### Resurse
 Markdown Guide, [Online] Available: https://www.markdownguide.org/basic-syntax/ [accesed: Mar 14, 1706]
