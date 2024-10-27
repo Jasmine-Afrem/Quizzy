@@ -21,9 +21,6 @@ Quizzy este un joc de trivia captivant, conceput pentru a-ți testa și îmbogă
 ## Arhitectura
 ![](https://github.com/user-attachments/assets/3d0b1ded-d7e6-42a3-8f7d-8f14135cc875)
 
-
-![Alt text](documentatie-ghid-utlizare-raport/diagrama-clase.png)
-
 ## Funcționalități
 
 * Autentificare
