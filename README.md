@@ -2,6 +2,9 @@
 # Quizzy
 ### Afrem Jasmine-Emilia
 
+![Quizzy](https://github.com/user-attachments/assets/75bf1167-3075-451b-bb4e-fcc35d4ecb0d)
+
+
 ## Descriere
 Quizzy este un joc de trivia captivant, conceput pentru a-ți testa și îmbogăți cunoștințele de cultură generală într-un mod interactiv și distractiv. Descoperă informații fascinante și învață lucruri noi din diverse domenii, de la știință și istorie la artă și geografie. Quizzy îți oferă ocazia să îți verifici limitele, să te perfecționezi cu fiecare joc și chiar să îți provoci prietenii la o competiție amicală pentru a vedea cine stăpânește mai bine secretele lumii înconjurătoare. Fiecare rundă te apropie mai mult de titlul de adevărat expert!
 
