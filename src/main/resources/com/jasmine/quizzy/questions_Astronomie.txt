@@ -1,0 +1,30 @@
+Care este cea mai apropiată stea de Pământ?|Soarele|Proxima Centauri|Sirius|Alpha Centauri
+Câte planete sunt în sistemul nostru solar?|8|9|7|10
+Care este cea mai mare planetă din sistemul nostru solar?|Jupiter|Saturn|Marte|Venus
+Ce planetă este cunoscută ca "Planeta Roșie"?|Marte|Venus|Mercur|Jupiter
+Care este cea mai luminoasă stea de pe cerul nopții?|Sirius|Canopus|Alpha Centauri|Vega
+Cine a fost primul om care a pășit pe Lună?|Neil Armstrong|Buzz Aldrin|Yuri Gagarin|Alan Shepard
+În ce an a avut loc prima aselenizare umană?|1969|1970|1968|1971
+Ce este o gaură neagră?|Un punct în spațiu cu gravitație extrem de puternică|O stea foarte luminoasă|O planetă fără atmosferă|O cometă foarte mare
+Care este cea mai rapidă planetă din sistemul nostru solar?|Mercur|Venus|Marte|Jupiter
+Ce este Calea Lactee?|O galaxie spiralată|O planetă|O stea|O cometă
+Cine a propus prima dată că Pământul se rotește în jurul Soarelui?|Nicolaus Copernicus|Galileo Galilei|Isaac Newton|Albert Einstein
+Ce este un meteorit?|Un fragment de asteroid sau cometă care atinge suprafața Pământului|O stea căzătoare|O planetă mică|O lună a unei planete
+Care este cea mai rece planetă din sistemul nostru solar?|Neptun|Uranus|Saturn|Jupiter
+Ce este un pulsar?|O stea neutronică care emite unde radio|O planetă care orbitează în jurul a două stele|O stea în curs de formare|O gaură neagră
+Cine a descoperit prima dată telescopul?|Galileo Galilei|Isaac Newton|Johannes Kepler|Nicolaus Copernicus
+În ce an a fost lansat primul satelit artificial, Sputnik 1?|1957|1960|1955|1961
+Ce este o supernovă?|Explozia unei stele la sfârșitul vieții sale|O stea foarte luminoasă|O planetă care se apropie de Soare|O gaură neagră în formare
+Care este cea mai îndepărtată planetă din sistemul nostru solar?|Neptun|Uranus|Saturn|Jupiter
+Ce este un quasar?|Un obiect astronomic extrem de luminos alimentat de o gaură neagră supermasivă|O stea foarte mare|O planetă foarte îndepărtată|O galaxie foarte mică
+Cine a formulat legile mișcării planetelor?|Johannes Kepler|Isaac Newton|Galileo Galilei|Albert Einstein
+În ce an a fost lansat telescopul spațial Hubble?|1990|1989|1991|1992
+Ce este o constelație?|Un grup de stele care formează un model recunoscut|O grupă de galaxii|O grupă de planete|O grupă de comete
+Cine a fost primul om care a călătorit în spațiu?|Yuri Gagarin|Neil Armstrong|Buzz Aldrin|Alan Shepard
+În ce an a avut loc prima călătorie umană în spațiu?|1961|1962|1960|1963
+Ce este Andromeda?|O galaxie|O stea|O planetă|O cometă
+Care este cea mai mare lună a planetei Jupiter?|Ganymede|Io|Europa|Callisto
+Ce este un asteroid?|Un obiect stâncos care orbitează în jurul Soarelui|O mică planetă|O mică stea|O mică lună
+În ce an a fost lansată sonda spațială Voyager 1?|1977|1980|1975|1982
+Ce este o nebula?|Un nor de praf și gaz în spațiu|O stea foarte îndepărtată|O planetă fără atmosferă|O gaură neagră
+Care este cea mai mare lună a planetei Saturn?|Titan|Enceladus|Rhea|Iapetus
