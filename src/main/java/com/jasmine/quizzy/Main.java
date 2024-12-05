@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -31,16 +32,24 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.util.Duration;
+import javafx.scene.media.AudioClip;
+import javafx.scene.input.MouseEvent;
+import javafx.event.EventHandler;
+
 
 public class Main extends Application {
 
     public static Main instance;
     public static String userName;
+    public static BackgroundMusic backgroundMusic;
 
     @Override
     public void start(Stage primaryStage) {
         instance = this;
         primaryStage.setTitle("Quizzy");
+        backgroundMusic = new BackgroundMusic("/backgroundMusic.mp3");
+        backgroundMusic.setVolume(0.3);
+        backgroundMusic.play();
         showLoginForm(primaryStage); // Call the loginForm method to set up the login form
     }
 
@@ -248,7 +257,26 @@ public class Main extends Application {
             // Call the loginForm method to show the login screen
             //loginForm(primaryStage);
             try {
-                Main.instance.showLoginForm(primaryStage);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Login");
+                alert.setHeaderText(null);
+                alert.setContentText("Please log yourself in.");
+                // Show the alert
+                alert.show();
+
+                // Create a PauseTransition to wait for a specific time before closing the alert and continuing
+                PauseTransition pause = new PauseTransition(Duration.millis(2)); // Wait for 2 mseconds
+                start(primaryStage);
+                pause.setOnFinished(event -> {
+                    // Close the alert after the pause
+                    alert.close();
+
+                    // Now call the start method or any further action you want to take
+                });
+
+                // Start the pause transition
+                pause.play();
+
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -327,6 +355,34 @@ public class Main extends Application {
         Button leaderboardButton = new Button("Scores");
         Button quitButton = new Button("Quit");
 
+        playButton.setOnAction(e -> {
+            try {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Play");
+                alert.setHeaderText(null);
+                alert.setContentText("The game is about to start!");
+
+                // Show the alert
+                alert.show();
+
+                // Create a PauseTransition to wait for a specific time before closing the alert and continuing
+                PauseTransition pause = new PauseTransition(Duration.millis(1));
+                pause.setOnFinished(event -> {
+                    showCategorySelection(primaryStage);
+                    // Close the alert after the pause
+                    alert.close();
+
+                });
+
+                // Start the pause transition
+                pause.play();
+
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+
         // Apply styles to buttons
         applyButtonStyles(playButton);
         applyButtonStyles(settingsButton);
@@ -357,7 +413,7 @@ public class Main extends Application {
         // Set a background image for the layout
         Image backgroundImage = new Image(getClass().getResource("/background.jpg").toExternalForm());
         BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, false, false); // Correct scaling
-        BackgroundImage bgImage = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage bgImage = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         layout.setBackground(new Background(bgImage));
 
         // Set the scene and show the stage
@@ -368,7 +424,84 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public void showCategorySelection(Stage primaryStage) {
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 28);
 
+        // Create a title for the category selection screen
+        Label titleLabel = new Label("Select a Quiz Category");
+        titleLabel.setFont(customFont);
+        titleLabel.setTextFill(Color.web("#ffffff"));
+        titleLabel.setAlignment(Pos.CENTER);
+
+        // Create buttons for categories
+        Button scienceButton = new Button("Science");
+        Button historyButton = new Button("History");
+        Button geographyButton = new Button("Geography");
+        Button backButton = new Button("Back");
+
+        // Apply styles to buttons
+        applyButtonStyles(scienceButton);
+        applyButtonStyles(historyButton);
+        applyButtonStyles(geographyButton);
+        applyButtonStyles(backButton);
+
+        scienceButton.setPrefSize(200, 50);
+        historyButton.setPrefSize(200, 50);
+        geographyButton.setPrefSize(200, 50);
+        backButton.setPrefSize(200, 50);
+
+        scienceButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            SoundEffect.playSound("/buttonPress.mp3");
+        });
+
+        historyButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            SoundEffect.playSound("/buttonPress.mp3");
+        });
+
+        geographyButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            SoundEffect.playSound("/buttonPress.mp3");
+        });
+
+        backButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            SoundEffect.playSound("/buttonPress.mp3");
+        });
+
+        // Button actions for each category (you can replace these with real logic)
+        scienceButton.setOnAction(event -> startQuiz(primaryStage, "Science"));
+        historyButton.setOnAction(event -> startQuiz(primaryStage, "History"));
+        geographyButton.setOnAction(event -> startQuiz(primaryStage, "Geography"));
+
+        // Back button to return to the main menu
+        backButton.setOnAction(event -> showMainMenu(primaryStage));
+
+        // Layout for buttons
+        VBox layout = new VBox(20);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(titleLabel, scienceButton, historyButton, geographyButton, backButton);
+
+        // Set a background image for the layout
+        Image backgroundImage = new Image(getClass().getResource("/background.jpg").toExternalForm());
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, false, false);
+        BackgroundImage bgImage = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        layout.setBackground(new Background(bgImage));
+
+        // Create the scene and set it on the primary stage
+        Scene categoryScene = new Scene(layout, 1024, 900);
+        primaryStage.setScene(categoryScene);
+    }
+
+    // Add this method to handle quiz starting
+    private void startQuiz(Stage primaryStage, String category) {
+        // TODO: Add logic to load quiz questions based on the selected category
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Start Quiz");
+        alert.setHeaderText(null);
+        alert.setContentText("Starting quiz in the category: " + category);
+        alert.showAndWait();
+
+        // For now, return to the main menu after showing the alert
+        showMainMenu(primaryStage);
+    }
 
     // Style method for TextField and PasswordField
     private void styleTextField(TextField textField) {
@@ -405,7 +538,7 @@ public class Main extends Application {
                         + "-fx-text-fill: white; "
                         + "-fx-background-radius: 25; "
                         + "-fx-padding: 10px 30px; "
-                        + "-fx-background-color: linear-gradient(to bottom, #6A4791, #4B0082); "  // Purple to indigo gradient
+                        + "-fx-background-color: linear-gradient(to bottom, #7752a1, #4B0082); "  // Purple to indigo gradient
                         + "-fx-border-color: transparent; "
                         + "-fx-border-width: 2px; "
                         + "-fx-border-radius: 25; "
@@ -427,6 +560,11 @@ public class Main extends Application {
                             + "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0, 0, 2);");
         });
 
+        // Play sound on click
+        button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            SoundEffect.playSound("/buttonPress.mp3");
+        });
+
         // Mouse exit (reset the background)
         button.setOnMouseExited(event -> {
             button.setStyle(
@@ -434,7 +572,7 @@ public class Main extends Application {
                             + "-fx-text-fill: white; "
                             + "-fx-background-radius: 25; "
                             + "-fx-padding: 10px 30px; "
-                            + "-fx-background-color: linear-gradient(to bottom, #6A4791, #4B0082); "  // Back to original gradient
+                            + "-fx-background-color: linear-gradient(to bottom, #7752a1, #4B0082); "  // Back to original gradient
                             + "-fx-border-color: transparent; "
                             + "-fx-border-width: 2px; "
                             + "-fx-border-radius: 25; "
@@ -462,7 +600,7 @@ public class Main extends Application {
             button.setStyle(
                     "-fx-font: 18 \"SourGummy-Medium\"; "  // Use the custom font
                             + "-fx-text-fill: white; "
-                            + "-fx-background-radius: 25; "
+                            + "-fx-background-radius: 25;   "
                             + "-fx-padding: 10px 30px; "
                             + "-fx-background-color: linear-gradient(to bottom, #FF1493, #6A4791); "  // Reapply hover gradient after click
                             + "-fx-border-color: transparent; "
