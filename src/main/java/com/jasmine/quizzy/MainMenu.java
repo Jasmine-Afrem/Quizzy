@@ -4,6 +4,7 @@ import com.jasmine.quizzy.ButtonStyler;
 import com.jasmine.quizzy.Settings;
 import com.jasmine.quizzy.SoundEffect;
 import com.jasmine.quizzy.StyleUtil;
+import com.jasmine.quizzy.SessionManager;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,7 +24,7 @@ public class MainMenu {
     private final String userName;
 
     public MainMenu(String userName) {
-        this.userName = userName;
+        this.userName = SessionManager.getCurrentUsername();
     }
 
     public void show(Stage primaryStage) {

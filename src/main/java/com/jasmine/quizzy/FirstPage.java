@@ -19,12 +19,15 @@ import javafx.util.Duration;
 
 public class FirstPage {
 
+    // Add a getter for the play button for testing purposes
+    public Button playButton;
+
     public void show(Stage primaryStage) {
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 24);
 
         Image logoImage = new Image(getClass().getResource("/Quizzy.png").toExternalForm());
         ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitWidth(500);
+        logoImageView.setFitWidth(600);
         logoImageView.setPreserveRatio(true);
 
         TranslateTransition floatingAnimation = new TranslateTransition(Duration.seconds(2), logoImageView);
@@ -33,11 +36,12 @@ public class FirstPage {
         floatingAnimation.setAutoReverse(true);
         floatingAnimation.play();
 
-        Button playButton = new Button("Play");
-        ButtonStyler.applyButtonStyles(playButton); // Refactor button styling into a utility class
+        // Make playButton accessible for testing
+        playButton = new Button("Play");
+        ButtonStyler.applyButtonStyles(playButton);
 
         playButton.setOnAction(event -> {
-            new LoginForm().show(primaryStage); // Navigate to the login form
+            new LoginForm().show(primaryStage);
         });
 
         playButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
@@ -54,6 +58,6 @@ public class FirstPage {
 
         Scene scene = new Scene(mainLayout, 1024, 900);
         primaryStage.setScene(scene);
-        primaryStage.show(); // This makes the stage visible
+        primaryStage.show();
     }
 }

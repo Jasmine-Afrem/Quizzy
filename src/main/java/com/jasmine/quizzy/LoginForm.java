@@ -100,7 +100,7 @@ public class LoginForm {
         primaryStage.setScene(loginScene);
     }
 
-    private void handleLogin(String username, String password, Stage primaryStage) {
+    void handleLogin(String username, String password, Stage primaryStage) {
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jasminetrivia", "root", "")) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
             stmt.setString(1, username);
@@ -108,9 +108,12 @@ public class LoginForm {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                SessionManager.setCurrentUserId(rs.getInt("id"));
-                Main.userName = username;
-                new MainMenu("User").show(primaryStage); // Navigate to Main Menu
+                // First, set the user data in the session
+                SessionManager.setCurrentUser(rs.getInt("id"), rs.getString("username"));
+
+                // Now proceed to the main menu with the username
+                Main.userName = rs.getString("username");  // Set the username in Main
+                new MainMenu(rs.getString("username")).show(primaryStage);  // Pass username to the main menu
             } else {
                 showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
             }
@@ -120,7 +123,8 @@ public class LoginForm {
         }
     }
 
-    private void showAlert(Alert.AlertType type, String title, String content) {
+
+    void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);

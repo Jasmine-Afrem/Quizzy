@@ -78,7 +78,7 @@ public class SignUpForm {
         primaryStage.setScene(scene);
     }
 
-    private void handleSignUp(String email, String username, String password, String repeatPassword, Stage primaryStage) {
+    void handleSignUp(String email, String username, String password, String repeatPassword, Stage primaryStage) {
         if (email.isEmpty() || username.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Sign Up Failed", "All fields must be filled.");
             return;
@@ -104,7 +104,7 @@ public class SignUpForm {
         }
     }
 
-    private void showAlert(Alert.AlertType type, String title, String content) {
+    void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);

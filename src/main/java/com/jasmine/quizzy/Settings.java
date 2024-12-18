@@ -146,8 +146,10 @@ public class Settings {
         // Go Back Button Action
         backButton.setOnAction(event -> {
             // Go back to the main menu or previous screen
-            SoundEffect.playSound("/buttonPress.mp3");  // Play sound effect on go back
-            new MainMenu("User").show(primaryStage);  // Go back to the main menu (example)
+            SoundEffect.playSound("/buttonPress.mp3");
+            String username = SessionManager.getCurrentUsername();
+            // Play sound effect on go back
+            new MainMenu(username).show(primaryStage);  // Go back to the main menu (example)
         });
 
         // Volume Label
@@ -177,7 +179,7 @@ public class Settings {
         volumeSlider.setMaxWidth(300);
 
         // Layout for fields and buttons
-        VBox layout = new VBox(20);
+        VBox layout = new VBox(25);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(
                 settingsLabel,
