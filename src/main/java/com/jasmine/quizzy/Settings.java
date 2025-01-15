@@ -1,18 +1,23 @@
 package com.jasmine.quizzy;
 
-import com.jasmine.quizzy.ButtonStyler;
-import com.jasmine.quizzy.SoundEffect;
-import com.jasmine.quizzy.StyleUtil;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.jasmine.quizzy.SessionManager.getCurrentUserId;
 
 public class Settings {
 
@@ -73,7 +78,7 @@ public class Settings {
         backButton.setPrefSize(200, 50);
 
         saveButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
 
@@ -90,12 +95,52 @@ public class Settings {
                 return;
             }
 
-            // Simulate saving changes (or call your actual database saving logic here)
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Settings Saved");
-            alert.setHeaderText(null);
-            alert.setContentText("Your settings have been saved.");
-            alert.showAndWait();
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jasminetrivia", "root", "")) {
+                // Dynamically build the SQL query
+                StringBuilder sql = new StringBuilder("UPDATE users SET ");
+                List<Object> params = new ArrayList<>();
+                if (!email.isEmpty()) {
+                    sql.append("email = ?, ");
+                    params.add(email);
+                }
+                if (!password.isEmpty()) {
+                    sql.append("password = ?, ");
+                    params.add(password);
+                }
+                // Remove the trailing comma and space
+                sql.setLength(sql.length() - 2);
+                sql.append(" WHERE id = ?");
+                // Retrieve the user ID (replace this with actual implementation)
+                int userId = getCurrentUserId();
+                params.add(userId);
+                PreparedStatement stmt = conn.prepareStatement(sql.toString());
+                // Set the parameters dynamically
+                for (int i = 0; i < params.size(); i++) {
+                    stmt.setObject(i + 1, params.get(i));
+                }
+                // Execute the update query
+                int rowsAffected = stmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Your account has been updated.");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Update Failed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Failed to update your account. Please try again.");
+                    alert.showAndWait();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Database Error");
+                alert.setHeaderText(null);
+                alert.setContentText("An error occurred while updating your account.");
+                alert.showAndWait();
+            }
         });
 
         // Go Back Button
@@ -105,7 +150,7 @@ public class Settings {
         goBackButton.setAlignment(Pos.CENTER);
 
         goBackButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         // Action for goBackButton
@@ -118,7 +163,7 @@ public class Settings {
         });
 
         logoutButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         // Log Out Button Action
@@ -146,7 +191,7 @@ public class Settings {
         // Go Back Button Action
         backButton.setOnAction(event -> {
             // Go back to the main menu or previous screen
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
             String username = SessionManager.getCurrentUsername();
             // Play sound effect on go back
             new MainMenu(username).show(primaryStage);  // Go back to the main menu (example)

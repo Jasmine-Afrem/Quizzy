@@ -58,7 +58,7 @@ public class LoginForm {
         });
 
         loginButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         // Create Sign-up text with hover effect

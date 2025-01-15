@@ -45,7 +45,7 @@ public class FirstPage {
         });
 
         playButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         VBox mainLayout = new VBox(30);

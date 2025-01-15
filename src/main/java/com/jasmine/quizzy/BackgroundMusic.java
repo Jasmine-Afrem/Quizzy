@@ -3,21 +3,20 @@ package com.jasmine.quizzy;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
-
 public class BackgroundMusic {
     private MediaPlayer mediaPlayer;
 
     // Constructor for production code
     public BackgroundMusic(String resourcePath) {
         try {
-            Media media = new Media(getClass().getResource("/backgroundMusic.mp3").toString());
+            Media media = new Media(getClass().getResource("/sounds/backgroundMusic.mp3").toString());
             this.mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         } catch (Exception e) {
             System.err.println("Error loading music: " + e.getMessage());
         }
     }
+
 
     // Constructor for testing
     public BackgroundMusic(MediaPlayer mediaPlayer) {

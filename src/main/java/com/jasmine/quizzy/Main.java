@@ -15,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Quizzy");
 
         // Initialize background music
-        backgroundMusic = new BackgroundMusic("/backgroundMusic.mp3");
+        backgroundMusic = new BackgroundMusic("/sounds/backgroundMusic.mp3");
         backgroundMusic.setVolume(0.3);
         backgroundMusic.play();
 

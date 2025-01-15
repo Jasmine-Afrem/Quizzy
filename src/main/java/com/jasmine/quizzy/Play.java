@@ -1,32 +1,23 @@
 package com.jasmine.quizzy;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
-import javafx.geometry.Insets;
+import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.media.Media;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import static com.jasmine.quizzy.Main.userName;
@@ -45,22 +36,19 @@ public class Play {
         List<String> lines = reader.lines().collect(Collectors.toList());
         List<Question> allQuestions = new ArrayList<>();
         for (String line : lines) {
-            String[] parts = line.split(",");
-            String question = parts[0];
-            String correctAnswer = parts[4];
-            List<String> wrongAnswers = Arrays.asList(parts[1], parts[2], parts[3]);
-            allQuestions.add(new Question(question, correctAnswer, wrongAnswers));
+            String[] parts = line.split("\\|");  // Use '|' as the delimiter
+            if (parts.length == 5) {
+                String question = parts[0];
+                String correctAnswer = parts[4]; // Correct answer is the last part
+                List<String> wrongAnswers = Arrays.asList(parts[1], parts[2], parts[3]); // Wrong answers
+                allQuestions.add(new Question(question, correctAnswer, wrongAnswers));
+            }
         }
         Collections.shuffle(allQuestions);
         questions.addAll(allQuestions.subList(0, Math.min(10, allQuestions.size())));
     }
 
     public void start(Stage primaryStage) {
-        String buttonStyle = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #4CAF50;";
-        String buttonHover = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #45a049;";
-        String buttonPressed = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #216a28;";
-        String labelColor = "#D0E8F2";
-
         if (questionIndex >= questions.size()) {
             showFinalScore(primaryStage); // Show the final score when questions are finished
             return;
@@ -73,19 +61,18 @@ public class Play {
         }
     }
 
-    // Show the final score when all questions have been answered
     private void showFinalScore(Stage primaryStage) {
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 24);
         Label scoreLabel = new Label("Congratulations! Your score is: " + score + " out of 10.");
         scoreLabel.setTextFill(Color.web("#D0E8F2"));
-        scoreLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+        scoreLabel.setFont(customFont);
         scoreLabel.setAlignment(Pos.CENTER);
 
         // Update the high scores
         updateScores();
 
-        Button playAgainButton = new Button("Inapoi la meniul principal!");
-        playAgainButton.setStyle("-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #4CAF50;");
-        playAgainButton.setAlignment(Pos.CENTER);
+        Button playAgainButton = new Button("Back to the main menu!");
+        ButtonStyler.applyButtonStyles(playAgainButton); // Apply custom button styling
         playAgainButton.setOnAction(e -> {
             try {
                 new MainMenu("User").show(primaryStage); // Navigate to the main menu
@@ -94,14 +81,13 @@ public class Play {
             }
         });
 
-        VBox layout = new VBox(10);
+        VBox layout = new VBox(30);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(scoreLabel, playAgainButton);
         Scene scene = new Scene(layout, 1000, 800);
         primaryStage.setScene(scene);
     }
 
-    // Update the scores in the file
     private void updateScores() {
         Map<String, Integer> scores = new HashMap<>();
         File file = new File("scor.txt");
@@ -127,81 +113,100 @@ public class Play {
                 writer.write(entry.getKey() + ":" + entry.getValue() + "\n");
             }
         } catch (IOException e) {
-            System.out.println("Nu s-a putut scrie în fișierul de scoruri.");
+            System.out.println("Error writing scores to file.");
         }
     }
 
-    // Create the layout for the current question
     private VBox createQuestionLayout(Question question, Stage primaryStage) {
-        String buttonStyle = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #4CAF50;";
-        String buttonHover = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #45a049;";
-        String buttonPressed = "-fx-font: 16 arial; -fx-base: #b6e7c9; -fx-background-color: #216a28;";
-        String labelColor = "#D0E8F2";
+        // Load the background image
+        Image backgroundImage = new Image(getClass().getResource("/background.jpg").toExternalForm());
 
+        // Create a BackgroundSize object (to scale the image appropriately)
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
+
+        // Create a BackgroundImage object
+        BackgroundImage background = new BackgroundImage(backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+
+        // Create VBox layout and set the background
+        VBox layout = new VBox(10);
+        layout.setBackground(new Background(background));
+        layout.setAlignment(Pos.CENTER);
+
+        // Load the custom font
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 30);
+
+        // Set up the question label
         Label questionLabel = new Label(question.getQuestion());
-        questionLabel.setFont(Font.font("Arial", FontWeight.BOLD, 30));
-        questionLabel.setTextFill(Color.web(labelColor));
+        questionLabel.setFont(customFont);
+        questionLabel.setTextFill(Color.web("#ffffff"));
         questionLabel.setWrapText(true);
         questionLabel.setTextAlignment(TextAlignment.CENTER);
 
+        // Prepare the answers list
         List<String> allAnswers = new ArrayList<>(question.getWrongAnswers());
         allAnswers.add(question.getCorrectAnswer());
         Collections.shuffle(allAnswers);
 
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
-
+        // Add the question label to the layout
         layout.getChildren().add(questionLabel);
 
+        // Set up buttons for answers
         HBox buttonBox = new HBox(10);
         buttonBox.setAlignment(Pos.CENTER);
 
         for (String answer : allAnswers) {
             Button answerButton = new Button(answer);
-            answerButton.setStyle(buttonStyle);
-            answerButton.setOnMouseEntered(e -> answerButton.setStyle(buttonHover));
-            answerButton.setOnMouseExited(e -> answerButton.setStyle(buttonStyle));
-            answerButton.setOnMousePressed(e -> answerButton.setStyle(buttonPressed));
-            answerButton.setOnMouseReleased(e -> answerButton.setStyle(buttonStyle));
-            answerButton.setWrapText(true);
-            answerButton.setTextAlignment(TextAlignment.CENTER);
-            answerButton.setMinWidth(200);
-            answerButton.setMaxWidth(300);
+            ButtonStyler.applyButtonStyles(answerButton);  // Apply custom button styling
             answerButton.setOnAction(e -> handleAnswer(answer, question, primaryStage));
-
             buttonBox.getChildren().add(answerButton);
         }
 
+        // Add the answer buttons to the layout
         layout.getChildren().add(buttonBox);
+
         return layout;
     }
 
-    // Handle the user's answer
     private void handleAnswer(String answer, Question question, Stage primaryStage) {
         if (answer.equals(question.getCorrectAnswer())) {
             score++;
-            playSound("correctAnswer.mp3");
-        } else {
-            playSound("wrongAnswer.mp3");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Raspuns Gresit");
-            alert.setHeaderText(null);
-            alert.setContentText("Raspuns gresit! Raspunsul corect a fost: " + question.getCorrectAnswer());
-            alert.setOnHidden(evt -> start(primaryStage)); // Move to the next question after the alert is closed
-            alert.showAndWait();
-            return;
-        }
+            SoundEffect.playSound("/sounds/correctAnswer.mp3");
 
-        // Move to the next question after handling the answer
-        start(primaryStage);
+            // Delay moving to the next question to allow for sound playback
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(event -> updateQuestionLayout(primaryStage));
+            pause.play();
+        } else {
+            SoundEffect.playSound("/sounds/wrongAnswer.mp3");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wrong Answer");
+            alert.setHeaderText(null);
+            alert.setContentText("Wrong Answer! The correct answer was: " + question.getCorrectAnswer());
+            alert.setOnHidden(evt -> updateQuestionLayout(primaryStage));
+            alert.showAndWait();
+        }
     }
 
-    private void playSound(String soundFileName) {
-        URL soundFileUrl = getClass().getResource("/" + soundFileName);
-        Media sound = new Media(soundFileUrl.toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setVolume(Settings.getVolum());
-        mediaPlayer.play();
+    private void updateQuestionLayout(Stage primaryStage) {
+        if (questionIndex >= questions.size()) {
+            showFinalScore(primaryStage);  // Show the final score when questions are finished
+            return;
+        } else {
+            Question question = questions.get(questionIndex++);
+            VBox layout = createQuestionLayout(question, primaryStage); // Create a layout for the question
+            Scene scene = primaryStage.getScene();
+            if (scene != null) {
+                // Reuse the existing scene and update its layout
+                ((VBox) scene.getRoot()).getChildren().setAll(layout.getChildren());
+            } else {
+                Scene newScene = new Scene(layout, 1000, 800);
+                primaryStage.setScene(newScene);
+            }
+            primaryStage.show();
+        }
     }
 }
-

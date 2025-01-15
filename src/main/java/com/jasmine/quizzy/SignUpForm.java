@@ -3,7 +3,6 @@ package com.jasmine.quizzy;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -63,11 +62,11 @@ public class SignUpForm {
         signUpButton.setOnAction(e -> handleSignUp(emailField.getText(), usernameField.getText(), passwordField.getText(), repeatPasswordField.getText(), primaryStage));
 
         signUpButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         backButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         VBox layout = new VBox(15, emailLabel, emailField, usernameLabel, usernameField, passwordLabel, passwordField, repeatPasswordLabel, repeatPasswordField, signUpButton, backButton);

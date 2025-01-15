@@ -1,10 +1,5 @@
 package com.jasmine.quizzy;
 
-import com.jasmine.quizzy.ButtonStyler;
-import com.jasmine.quizzy.Settings;
-import com.jasmine.quizzy.SoundEffect;
-import com.jasmine.quizzy.StyleUtil;
-import com.jasmine.quizzy.SessionManager;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -74,19 +68,19 @@ public class MainMenu {
         });
 
         playButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         settingsButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         leaderboardButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         quitButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         quitButton.setOnAction(event -> System.exit(0));
@@ -112,7 +106,7 @@ public class MainMenu {
 
     private void addButtonSoundEffect(Button... buttons) {
         for (Button button : buttons) {
-            button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> SoundEffect.playSound("/buttonPress.mp3"));
+            button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> SoundEffect.playSound("/sounds/buttonPress.mp3"));
         }
     }
 }

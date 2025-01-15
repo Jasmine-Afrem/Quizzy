@@ -37,7 +37,7 @@ public class SoundEffectTest {
                 doReturn(mediaPlayerSpy).when(mediaPlayerSpy).play();
 
                 // Call the method that plays the sound
-                String soundFilePath = "/buttonPress.mp3"; // Example valid file path
+                String soundFilePath = "/sounds/buttonPress.mp3"; // Example valid file path
                 SoundEffect.playSound(soundFilePath);
 
                 // Verify if the play() method was called once

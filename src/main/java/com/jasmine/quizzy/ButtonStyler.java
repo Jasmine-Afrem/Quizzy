@@ -37,7 +37,7 @@ public class ButtonStyler {
 
         // Play sound on click
         button.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-            SoundEffect.playSound("/buttonPress.mp3");
+            SoundEffect.playSound("/sounds/buttonPress.mp3");
         });
 
         // Mouse exit (reset the background)
