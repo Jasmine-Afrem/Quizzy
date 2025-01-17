@@ -42,3 +42,35 @@ What is the process by which water changes from a liquid to a gas?|Condensation|
 What is the SI unit of temperature?|Celsius|Fahrenheit|Rankine|Kelvin
 What is the term for energy stored in an object due to its position?|Kinetic energy|Thermal energy|Nuclear energy|Potential energy
 Which planet is closest to the Sun?|Venus|Earth|Mars|Mercury
+What is the main organelle responsible for photosynthesis in plants?|Nucleus|Mitochondria|Chloroplast|Golgi Apparatus
+What is the charge of an electron?|Positive|Negative|Neutral|None
+What is the chemical symbol for oxygen?|O|O2|Ox|Og
+What is the atomic number of carbon?|6|12|8|14
+What is the largest type of star in the universe?|White dwarf|Red dwarf|Supergiant|Neutron star
+Which scientist proposed the theory of relativity?|Isaac Newton|Albert Einstein|Galileo Galilei|Marie Curie
+What is the primary gas found in the Sun?|Oxygen|Nitrogen|Hydrogen|Helium
+What is the measure of the amount of matter in an object?|Weight|Density|Mass|Volume
+What type of organism causes malaria?|Virus|Bacteria|Fungi|Protozoa
+What is the most abundant gas in the Earth's atmosphere?|Oxygen|Nitrogen|Carbon Dioxide|Argon
+What is the basic unit of heredity?|Cell|Gene|Chromosome|DNA
+Which layer of Earth's atmosphere contains the ozone layer?|Troposphere|Stratosphere|Mesosphere|Exosphere
+What type of blood vessel carries blood away from the heart?|Veins|Capillaries|Arteries|None
+What does DNA stand for?|Deoxyribonucleic Acid|Dinucleic Acid|Double Helix Acid|Dioxygen Acid
+What is the main function of white blood cells?|Carry oxygen|Fight infections|Clot blood|Transport nutrients
+What is the name of the process by which cells divide to produce two identical cells?|Osmosis|Meiosis|Mitosis|Cytokinesis
+What is the term for the force that pulls objects toward the center of the Earth?|Electromagnetic Force|Gravity|Friction|Nuclear Force
+Which part of the brain controls balance and coordination?|Cerebrum|Medulla Oblongata|Cerebellum|Thalamus
+What is the smallest particle of an element?|Atom|Molecule|Electron|Proton
+What kind of lens is used to correct short-sightedness?|Convex lens|Concave lens|Cylindrical lens|Flat lens
+What is the SI unit of electric current?|Volt|Ampere|Ohm|Joule
+What is the process of heat transfer in liquids and gases?|Conduction|Convection|Radiation|Diffusion
+What is the pH range of acidic substances?|0-6|7|8-14|0-14
+Which particle in an atom has no electric charge?|Proton|Electron|Neutron|Positron
+What is the layer of cells that protects the leaf?|Epidermis|Xylem|Phloem|Stomata
+What is the name of the phase change from solid directly to gas?|Evaporation|Condensation|Sublimation|Deposition
+What is the study of fungi called?|Botany|Zoology|Mycology|Ecology
+What organ is primarily responsible for producing insulin?|Liver|Kidney|Pancreas|Spleen
+What is the main source of energy for life on Earth?|Wind|Water|Geothermal|Sun
+What is the term for the bending of light as it passes through a medium?|Reflection|Dispersion|Refraction|Diffraction
+What is the name of the bond between water molecules?|Ionic bond|Hydrogen bond|Covalent bond|Metallic bond
+    

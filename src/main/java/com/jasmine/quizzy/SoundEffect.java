@@ -1,9 +1,6 @@
 package com.jasmine.quizzy;
 
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
 import java.net.URL;
 
 public class SoundEffect {
@@ -21,15 +18,11 @@ public class SoundEffect {
             // Log the resource URL for debugging
             System.out.println("Loading sound from: " + resource.toExternalForm());
 
-            // Create a Media object and MediaPlayer for the sound
-            String soundFileUrl = resource.toExternalForm();
-            Media sound = new Media(soundFileUrl);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
-            // Play sound in a separate thread to prevent UI blocking
+            // Create an AudioClip object and play it asynchronously
+            AudioClip audioClip = new AudioClip(resource.toExternalForm());
             new Thread(() -> {
                 try {
-                    mediaPlayer.play();  // Play the sound asynchronously
+                    audioClip.play();  // Play sound asynchronously
                     System.out.println("Sound played successfully.");
                 } catch (Exception e) {
                     System.err.println("Error while playing sound: " + e.getMessage());
