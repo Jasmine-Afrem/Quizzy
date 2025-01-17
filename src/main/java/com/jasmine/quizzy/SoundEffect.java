@@ -15,15 +15,11 @@ public class SoundEffect {
                 return;  // Exit if the file is not found
             }
 
-            // Log the resource URL for debugging
-            System.out.println("Loading sound from: " + resource.toExternalForm());
-
             // Create an AudioClip object and play it asynchronously
             AudioClip audioClip = new AudioClip(resource.toExternalForm());
             new Thread(() -> {
                 try {
                     audioClip.play();  // Play sound asynchronously
-                    System.out.println("Sound played successfully.");
                 } catch (Exception e) {
                     System.err.println("Error while playing sound: " + e.getMessage());
                 }

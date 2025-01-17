@@ -1,0 +1,61 @@
+What is the largest continent on Earth?|Asia|Africa|North America|Europe
+Which country has the largest population in the world?|India|United States|China|Russia
+What is the capital city of France?|London|Paris|Berlin|Rome
+Which river is the longest in the world?|Amazon River|Nile River|Yangtze River|Mississippi River
+Which ocean is the largest by surface area?|Atlantic Ocean|Indian Ocean|Southern Ocean|Pacific Ocean
+What is the highest mountain in the world?|Mount Everest|Mount Kilimanjaro|Mount Fuji|Mount McKinley
+Which desert is the largest in the world?|Kalahari Desert|Gobi Desert|Sahara Desert|Atacama Desert
+What is the capital of Japan?|Beijing|Seoul|Tokyo|Osaka
+Which country is known as the Land of the Rising Sun?|South Korea|China|Japan|Thailand
+What is the longest river in Africa?|Congo River|Zambezi River|Nile River|Orange River
+Which country is both an island and a continent?|Australia|New Zealand|Iceland|Greenland
+Which sea is the largest in the world?|Red Sea|Caribbean Sea|Mediterranean Sea|Philippine Sea
+What is the official language of Brazil?|Spanish|Portuguese|French|English
+What is the capital city of Canada?|Ottawa|Toronto|Montreal|Vancouver
+Which country has the most number of time zones?|United States|China|Russia|India
+What is the largest island in the world?|Australia|Greenland|New Guinea|Borneo
+Which mountain range is the longest in the world?|Andes|Himalayas|Rockies|Alps
+Which continent is known as the "Dark Continent" due to its exploration history?|Asia|Africa|Europe|North America
+What is the capital of Italy?|Madrid|Rome|Paris|Lisbon
+Which two countries share the longest international border?|United States and Canada|Russia and China|Brazil and Argentina|India and Bangladesh
+Which desert is located in northern Africa?|Kalahari Desert|Gobi Desert|Sahara Desert|Atacama Desert
+What is the largest country in the world by area?|United States|Canada|China|Russia
+What is the capital of Egypt?|Cairo|Lagos|Jerusalem|Riyadh
+Which country is the home of the Great Barrier Reef?|Australia|United States|Brazil|South Africa
+Which river flows through Egypt and Sudan?|Nile River|Amazon River|Yangtze River|Mekong River
+What is the smallest country in the world by area?|Monaco|Vatican City|Nauru|San Marino
+Which city is known as the "Big Apple"?|Los Angeles|Chicago|New York City|Miami
+What is the name of the longest mountain range in South America?|Andes Mountains|Rocky Mountains|Alps|Himalayas
+Which country has the most lakes in the world?|Canada|United States|Russia|Brazil
+Which ocean is to the east of the United States?|Atlantic Ocean|Pacific Ocean|Indian Ocean|Arctic Ocean
+Which city is the capital of Spain?|Lisbon|Paris|Rome|Madrid
+What is the name of the famous waterfall located between the United States and Canada?|Iguazu Falls|Niagara Falls|Victoria Falls|Angel Falls
+Which country is home to the historic site of Machu Picchu?|Peru|Mexico|Colombia|Chile
+What is the name of the longest river in South America?|Amazon River|Orinoco River|Parana River|Mekong River
+Which continent is entirely located in the Southern Hemisphere?|Africa|South America|Australia|Antarctica
+What is the largest country in Africa by area?|Algeria|Nigeria|South Africa|Sudan
+Which city is home to the Eiffel Tower?|Rome|Paris|Berlin|London
+What is the name of the largest island in the Caribbean?|Cuba|Hispaniola|Puerto Rico|Jamaica
+Which country has the most volcanoes in the world?|Indonesia|Japan|Italy|United States
+What is the capital city of India?|New Delhi|Kolkata|Mumbai|Chennai
+Which country is the smallest in Africa by area?|Seychelles|Gabon|Lesotho|Gambia
+Which mountain is known as the "Roof of the World"?|Mount Everest|Mount Kilimanjaro|K2|Tian Shan
+Which ocean is to the west of Africa?|Atlantic Ocean|Pacific Ocean|Indian Ocean|Arctic Ocean
+Which city is known as the "City of Canals"?|Venice|Amsterdam|Paris|Stockholm
+What is the capital city of Russia?|Moscow|St. Petersburg|Kiev|Warsaw
+What is the deepest lake in the world?|Lake Baikal|Lake Tahoe|Caspian Sea|Great Slave Lake
+Which country is home to the ancient city of Petra?|Jordan|Egypt|Turkey|Israel
+Which country has the largest economy in the world?|China|United States|Japan|Germany
+Which city is home to the famous landmark, the Colosseum?|Rome|Athens|Cairo|London
+What is the largest peninsula in the world?|Arabian Peninsula|Indian Peninsula|Iberian Peninsula|Korean Peninsula
+What is the name of the body of water that separates Saudi Arabia and Africa?|Red Sea|Mediterranean Sea|Persian Gulf|Caribbean Sea
+Which mountain range forms the natural border between France and Spain?|Alps|Pyrenees|Andes|Himalayas
+What is the largest city in Brazil?|Rio de Janeiro|São Paulo|Brasília|Salvador
+What is the official language of Switzerland?|French|German|Italian|All of the above
+Which country has the highest population density?|Monaco|China|India|Bangladesh
+What is the capital of South Korea?|Seoul|Tokyo|Beijing|Manila
+Which country is known for having the most pyramids?|Mexico|Egypt|Sudan|Peru
+What is the largest lake in Africa by surface area?|Lake Victoria|Lake Tanganyika|Lake Malawi|Lake Chad
+Which country has the longest coastline?|Canada|Australia|United States|Russia
+What is the name of the large desert in Australia?|Gobi Desert|Great Victoria Desert|Kalahari Desert|Sahara Desert
+Which country is the smallest in South America by area?|Suriname|Guyana|Ecuador|Uruguay

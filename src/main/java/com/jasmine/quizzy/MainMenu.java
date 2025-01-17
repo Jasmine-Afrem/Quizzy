@@ -1,6 +1,7 @@
 package com.jasmine.quizzy;
 
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -65,6 +66,19 @@ public class MainMenu {
 
         settingsButton.setOnAction(event -> {
             new Settings().start(primaryStage);
+        });
+
+        leaderboardButton.setOnAction(e -> {
+            // Open the Scores screen first
+            new Scores().show(primaryStage);
+
+            // Then, after the Scores screen has been opened, show the custom alert
+            Platform.runLater(() -> {
+                // Call the custom alert with the title, header, and content
+                CustomAlert.showAlert("Scores Information",
+                        "Welcome to the Scores Page!",
+                        "Here you can see information about your score and rank.");
+            });
         });
 
         playButton.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {

@@ -115,27 +115,33 @@
             primaryStage.setScene(scene);
         }
 
-    
+
         private void updateScores() {
             Map<String, Integer> scores = new HashMap<>();
             File file = new File("scor.txt");
+
+            // Read the existing scores from the file
             if (file.exists()) {
                 try (Scanner scanner = new Scanner(file)) {
                     while (scanner.hasNextLine()) {
                         String[] parts = scanner.nextLine().split(":");
                         if (parts.length == 2) {
-                            scores.put(parts[0], Integer.parseInt(parts[1]));
+                            try {
+                                scores.put(parts[0], Integer.parseInt(parts[1].trim()));
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid score format: " + parts[1]);
+                            }
                         }
                     }
                 } catch (FileNotFoundException e) {
-                    // Handle error
+                    System.out.println("Score file not found.");
                 }
             }
-    
-            if (!scores.containsKey(userName) || score > scores.get(userName)) {
-                scores.put(userName, score); // Update if the score is higher
-            }
-    
+
+            // Add the new score to the existing score for the user
+            scores.put(userName, scores.getOrDefault(userName, 0) + score);
+
+            // Write the updated scores back to the file
             try (FileWriter writer = new FileWriter(file)) {
                 for (Map.Entry<String, Integer> entry : scores.entrySet()) {
                     writer.write(entry.getKey() + ":" + entry.getValue() + "\n");
