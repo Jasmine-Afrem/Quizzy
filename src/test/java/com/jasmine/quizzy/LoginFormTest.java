@@ -2,7 +2,6 @@ package com.jasmine.quizzy;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -17,9 +16,17 @@ import static org.mockito.Mockito.*;
 
 import org.mockito.Mockito;
 
+/**
+ * Test class for the {@link LoginForm} class, which handles user login functionality.
+ * It tests scenarios such as successful login, failed login due to incorrect credentials,
+ * and database connection errors.
+ */
 public class LoginFormTest {
 
-    // Start JavaFX application before the tests
+    /**
+     * Setup method to ensure the JavaFX application is initialized before any tests are run.
+     * This method ensures that JavaFX components are available for the tests.
+     */
     @BeforeAll
     public static void setupJavaFX() {
         // Make sure the JavaFX application thread is started
@@ -29,7 +36,10 @@ public class LoginFormTest {
         }
     }
 
-    // Simple JavaFX application class to initialize the JavaFX toolkit
+    /**
+     * Simple JavaFX application class used to initialize the JavaFX toolkit for testing.
+     * The application starts a basic stage to allow JavaFX elements to function.
+     */
     public static class JavaFXTestApp extends Application {
         @Override
         public void start(Stage primaryStage) {
@@ -39,6 +49,10 @@ public class LoginFormTest {
         }
     }
 
+    /**
+     * Test for the  method when login is successful.
+     * Verifies that the main menu is shown after a successful login.
+     */
     @Test
     public void testHandleLogin_SuccessfulLogin() throws InterruptedException {
         Platform.runLater(() -> {
@@ -47,6 +61,7 @@ public class LoginFormTest {
                 LoginForm loginForm = new LoginForm();
                 loginForm.show(primaryStage);
 
+                // Locate the login fields and button by their IDs
                 TextField usernameField = (TextField) primaryStage.getScene().lookup("#usernameField");
                 PasswordField passwordField = (PasswordField) primaryStage.getScene().lookup("#passwordField");
                 Button loginButton = (Button) primaryStage.getScene().lookup("#loginButton");
@@ -59,8 +74,7 @@ public class LoginFormTest {
                 loginButton.fire();
 
                 // Perform assertions to ensure the behavior after login
-                // For example, check that the main menu is shown
-                assertTrue(primaryStage.getScene().lookup("#mainMenu") != null);
+                assertNotNull(primaryStage.getScene().lookup("#mainMenu"));
 
             } catch (Exception e) {
                 fail("Test failed due to exception: " + e.getMessage());
@@ -71,6 +85,10 @@ public class LoginFormTest {
         Thread.sleep(2000);
     }
 
+    /**
+     * Test for the  method when login fails due to incorrect credentials.
+     * Verifies that an error alert is shown with the appropriate message.
+     */
     @Test
     public void testHandleLogin_FailedLogin() throws InterruptedException {
         Platform.runLater(() -> {
@@ -85,6 +103,7 @@ public class LoginFormTest {
                 Stage primaryStage = new Stage();
                 loginFormSpy.show(primaryStage);
 
+                // Locate the login fields and button
                 TextField usernameField = (TextField) primaryStage.getScene().lookup("#usernameField");
                 PasswordField passwordField = (PasswordField) primaryStage.getScene().lookup("#passwordField");
                 Button loginButton = (Button) primaryStage.getScene().lookup("#loginButton");
@@ -96,7 +115,7 @@ public class LoginFormTest {
                 // Simulate login button click
                 loginButton.fire();
 
-                // Verify if the showAlert method was called with the correct parameters
+                // Verify that the alert method was called with the correct parameters
                 verify(loginFormSpy).showAlert(eq(Alert.AlertType.ERROR), eq("Login Failed"), eq("Invalid username or password."));
                 verify(mockAlert).showAndWait(); // Check if the alert's showAndWait method was called
 
@@ -109,6 +128,10 @@ public class LoginFormTest {
         Thread.sleep(2000);
     }
 
+    /**
+     * Test for the  method when a database error occurs.
+     * Verifies that an error alert is shown with a message indicating the database issue.
+     */
     @Test
     public void testHandleLogin_DatabaseError() throws InterruptedException {
         Platform.runLater(() -> {
@@ -123,6 +146,7 @@ public class LoginFormTest {
                 Stage primaryStage = new Stage();
                 loginFormSpy.show(primaryStage);
 
+                // Locate the login fields and button
                 TextField usernameField = (TextField) primaryStage.getScene().lookup("#usernameField");
                 PasswordField passwordField = (PasswordField) primaryStage.getScene().lookup("#passwordField");
                 Button loginButton = (Button) primaryStage.getScene().lookup("#loginButton");
@@ -134,7 +158,7 @@ public class LoginFormTest {
                 // Simulate login button click
                 loginButton.fire();
 
-                // Verify if the showAlert method was called for database error
+                // Verify that the alert method was called for database error
                 verify(loginFormSpy).showAlert(eq(Alert.AlertType.ERROR), eq("Database Error"), eq("An error occurred while connecting to the database."));
                 verify(mockAlert).showAndWait(); // Check if the alert's showAndWait method was called
 

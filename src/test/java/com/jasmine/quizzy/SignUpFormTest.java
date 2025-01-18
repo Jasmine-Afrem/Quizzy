@@ -12,15 +12,28 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for the {@link SignUpForm} class. This class contains tests for verifying
+ * the functionality of the sign-up form, including handling valid and invalid data inputs.
+ */
 public class SignUpFormTest {
 
+    /**
+     * Setup method to ensure the JavaFX application is initialized before any tests are run.
+     * This method ensures that JavaFX components are available for the tests.
+     */
     @BeforeAll
     public static void setupJavaFX() {
+        // Ensure the JavaFX application thread is started if not already initialized
         if (!Platform.isFxApplicationThread()) {
             Application.launch(JavaFXTestApp.class);
         }
     }
 
+    /**
+     * Simple JavaFX application class used to initialize the JavaFX toolkit for testing.
+     * The application starts a basic stage to allow JavaFX elements to function.
+     */
     public static class JavaFXTestApp extends Application {
         @Override
         public void start(Stage primaryStage) {
@@ -29,6 +42,10 @@ public class SignUpFormTest {
         }
     }
 
+    /**
+     * Test for signing up with valid data. Verifies that when the user enters valid email, username,
+     * and matching passwords, a success alert is triggered.
+     */
     @Test
     public void testSignUpWithValidData() throws InterruptedException {
         Platform.runLater(() -> {
@@ -72,6 +89,10 @@ public class SignUpFormTest {
         Thread.sleep(2000);
     }
 
+    /**
+     * Test for signing up with empty fields. Verifies that when required fields are left empty,
+     * an error alert is triggered indicating that all fields must be filled.
+     */
     @Test
     public void testSignUpWithEmptyFields() throws InterruptedException {
         Platform.runLater(() -> {
@@ -109,6 +130,10 @@ public class SignUpFormTest {
         Thread.sleep(2000);
     }
 
+    /**
+     * Test for signing up with mismatched passwords. Verifies that when the password and confirmation
+     * password do not match, an error alert is triggered indicating the mismatch.
+     */
     @Test
     public void testSignUpWithPasswordMismatch() throws InterruptedException {
         Platform.runLater(() -> {

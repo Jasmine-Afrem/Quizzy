@@ -7,132 +7,100 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Objects;
 
+/**
+ * This class handles the display of the score and rank information
+ * after the user finishes a quiz.
+ */
 public class Scores {
 
+    /**
+     * Displays the score, rank, and ranks list on the provided Stage.
+     * @param primaryStage The main stage where the content will be displayed.
+     */
     public void show(Stage primaryStage) {
         // Load the background image
-        Image backgroundImage = new Image(getClass().getResource("/background.jpg").toExternalForm());
+        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/background.jpg")).toExternalForm());
+
+        // Create a BackgroundSize object (to scale the image appropriately)
         BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
+
+        // Create a BackgroundImage object
         BackgroundImage background = new BackgroundImage(backgroundImage,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 backgroundSize);
 
-        // Create the outer panel behind the components to add depth
-        Rectangle backgroundPanel = new Rectangle(1024, 900);  // Match the scene size
-        backgroundPanel.setFill(Color.web("rgba(48, 25, 52, 0.7)")); // Deep violet with transparency
-        backgroundPanel.setArcWidth(20);  // Rounded corners for depth effect
-        backgroundPanel.setArcHeight(20);  // Rounded corners for depth effect
+        // Root container with background image
+        StackPane root = new StackPane();
+        root.setBackground(new Background(background));
 
-        // Create VBox layout and set the background image
-        VBox layout = new VBox(20);
-        layout.setBackground(new Background(background));
-        layout.setAlignment(Pos.CENTER);  // Ensures all elements inside VBox are centered
+        // Font setup
+        Font titleFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 34);
+        Font textFont = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 24);
 
-        // Font for the labels
-        Font customFontTitles = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 34);
-        Font customFontScore = Font.loadFont(getClass().getResourceAsStream("/fonts/SourGummy-Medium.ttf"), 24);
+        // Score section
+        int userScoreValue = SessionManager.getCurrentUserScore();
+        VBox scoreSection = createSection("Score", "Your score is: " + userScoreValue + "!", titleFont, textFont);
 
-        // Score Section
-        Label scoreTitle = new Label("Score");
-        scoreTitle.setFont(customFontTitles);
-        scoreTitle.setTextFill(Color.web("#ffffff"));
-        scoreTitle.setAlignment(Pos.CENTER);  // Center the score title
-
-        // Create a rounded background panel for score title
-        Rectangle scoreTitlePanel = new Rectangle(0, 0, 200, 50);
-        scoreTitlePanel.setFill(Color.web("rgba(48, 25, 52, 0.7)")); // Deep violet with transparency
-        scoreTitlePanel.setArcWidth(20);  // Rounded corners
-        scoreTitlePanel.setArcHeight(20);  // Rounded corners
-
-        // Load the current user's score from SessionManager
-        int userScoreValue = SessionManager.getCurrentUserScore();  // Get the score from SessionManager
-
-        // Create the label for the score
-        Label userScore = new Label("Your score is: " + userScoreValue + "!");
-        userScore.setFont(customFontScore);
-        userScore.setTextFill(Color.web("#ffffff"));
-        userScore.setAlignment(Pos.CENTER);  // Center the user score
-
-        // Rank Section
-        Label rankTitle = new Label("Rank");
-        rankTitle.setFont(customFontTitles);
-        rankTitle.setTextFill(Color.web("#ffffff"));
-        rankTitle.setAlignment(Pos.CENTER);  // Center the rank title
-
+        // Rank section
         String userRank = calculateRank(userScoreValue);
-        Label userRankLabel = new Label(userRank);
-        userRankLabel.setFont(customFontScore);
-        userRankLabel.setTextFill(Color.web("#ffffff"));
-        userRankLabel.setAlignment(Pos.CENTER);  // Center the user rank
+        VBox rankSection = createSection("Rank", userRank, titleFont, textFont);
 
-        // Ranks Section
+        // Ranks list section
+        VBox ranksListSection = new VBox(10);
+        ranksListSection.setAlignment(Pos.CENTER);
+        ranksListSection.setPrefWidth(300);
+        ranksListSection.setStyle("-fx-background-color: #4f2a70; -fx-background-radius: 20;");
+
+        // Apply darker shadow effect to the ranks list section
+        ranksListSection.setEffect(new javafx.scene.effect.DropShadow(10, Color.DARKGRAY));  // Darker gray shadow
+
         Label ranksTitle = new Label("Ranks");
-        ranksTitle.setFont(customFontTitles);
-        ranksTitle.setTextFill(Color.web("#ffffff"));
-        ranksTitle.setAlignment(Pos.CENTER);  // Center the ranks title
+        ranksTitle.setFont(titleFont);
+        ranksTitle.setTextFill(Color.WHITE);
 
-        // Rank details text as separate labels
         Label rankNoob = new Label("Noob: 0-20");
         Label rankBeginner = new Label("Beginner: 20-60");
         Label rankIntermediate = new Label("Intermediate: 60-100");
         Label rankMaster = new Label("Master: 100-200");
         Label rankEinstein = new Label("Einstein: 200+");
 
-        // Set font and text properties for each label
-        rankNoob.setFont(customFontScore);
-        rankBeginner.setFont(customFontScore);
-        rankIntermediate.setFont(customFontScore);
-        rankMaster.setFont(customFontScore);
-        rankEinstein.setFont(customFontScore);
+        rankNoob.setFont(textFont);
+        rankBeginner.setFont(textFont);
+        rankIntermediate.setFont(textFont);
+        rankMaster.setFont(textFont);
+        rankEinstein.setFont(textFont);
 
-        rankNoob.setTextFill(Color.web("#ffffff"));
-        rankBeginner.setTextFill(Color.web("#ffffff"));
-        rankIntermediate.setTextFill(Color.web("#ffffff"));
-        rankMaster.setTextFill(Color.web("#ffffff"));
-        rankEinstein.setTextFill(Color.web("#ffffff"));
+        rankNoob.setTextFill(Color.WHITE);
+        rankBeginner.setTextFill(Color.WHITE);
+        rankIntermediate.setTextFill(Color.WHITE);
+        rankMaster.setTextFill(Color.WHITE);
+        rankEinstein.setTextFill(Color.WHITE);
 
-        // Align all rank labels to the center
-        rankNoob.setAlignment(Pos.CENTER);
-        rankBeginner.setAlignment(Pos.CENTER);
-        rankIntermediate.setAlignment(Pos.CENTER);
-        rankMaster.setAlignment(Pos.CENTER);
-        rankEinstein.setAlignment(Pos.CENTER);
+        ranksListSection.getChildren().addAll(
+                ranksTitle, rankNoob, rankBeginner, rankIntermediate, rankMaster, rankEinstein);
 
-        // Create a VBox container to hold all rank labels
-        VBox rankDetailsContainer = new VBox(10); // 10 is the space between rank labels
-        rankDetailsContainer.setAlignment(Pos.CENTER); // Ensure the rank labels are centered
-        rankDetailsContainer.getChildren().addAll(
-                rankNoob, rankBeginner, rankIntermediate, rankMaster, rankEinstein);
+        // Create a dark purple panel to hold the layout
+        VBox darkPurplePanel = new VBox(20);
+        darkPurplePanel.setAlignment(Pos.CENTER);
+        darkPurplePanel.setPrefSize(350, 500); // Adjust the size as needed
+        darkPurplePanel.setMaxWidth(400); // Set max width for the panel
+        darkPurplePanel.setMaxHeight(500); // Set max height for the panel
+        darkPurplePanel.setStyle("-fx-background-color: #643b87; -fx-background-radius: 30; -fx-padding: 20;");
+        darkPurplePanel.setEffect(new javafx.scene.effect.DropShadow(10, Color.DARKGRAY));  // Darker gray shadow
 
-        // Create a rounded background panel for the rank details
-        Rectangle rankPanel = new Rectangle(0, 0, 200, 200);
-        rankPanel.setFill(Color.web("rgba(48, 25, 52, 0.7)")); // Deep violet with transparency
-        rankPanel.setArcWidth(20);  // Rounded corners
-        rankPanel.setArcHeight(20);  // Rounded corners
+        // Add the sections to the dark purple panel
+        darkPurplePanel.getChildren().addAll(scoreSection, rankSection, ranksListSection);
 
-        // Add all elements to the layout (VBox)
-        layout.getChildren().addAll(
-                scoreTitle,
-                userScore,
-                rankTitle,
-                userRankLabel,
-                ranksTitle,
-                rankDetailsContainer // Add rank details below the ranks title
-        );
-
-        // Add a button to go back to the main menu
+        // Back button with hover effect
         Button backButton = new Button("Back");
-        ButtonStyler.applyButtonStyles(backButton);  // Assuming ButtonStyler is defined elsewhere
+        ButtonStyler.applyButtonStyles(backButton);
         backButton.setOnAction(e -> {
             try {
                 new MainMenu(SessionManager.getCurrentUsername()).show(primaryStage);
@@ -141,19 +109,58 @@ public class Scores {
             }
         });
 
-        // Add the back button to layout
-        layout.getChildren().add(backButton);
+        // Create a VBox to stack sections and the back button within the dark purple panel
+        VBox darkPurpleContent = new VBox(20);
+        darkPurpleContent.setAlignment(Pos.CENTER);
+        darkPurpleContent.getChildren().addAll(scoreSection, rankSection, ranksListSection, backButton);
 
-        // Create a StackPane to put the background panel behind the VBox layout
-        StackPane root = new StackPane();
-        root.getChildren().addAll(backgroundPanel, layout);  // Background panel first, layout on top
+        // Add the content to the dark purple panel
+        darkPurplePanel.getChildren().setAll(darkPurpleContent);
 
-        // Set the scene and show the stage
-        Scene scene = new Scene(root, 1024, 900);
+        // Add everything to the root container
+        root.getChildren().add(darkPurplePanel);
+
+        // Scene setup
+        Scene scene = new Scene(root, 1024, 900); // Adjusted scene size
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    /**
+     * Creates a section with a title and content.
+     * @param titleText The title of the section.
+     * @param contentText The content of the section.
+     * @param titleFont The font for the title.
+     * @param textFont The font for the content.
+     * @return A VBox containing the title and content labels.
+     */
+    private VBox createSection(String titleText, String contentText, Font titleFont, Font textFont) {
+        VBox section = new VBox(10);
+        section.setAlignment(Pos.CENTER);
+        section.setPrefWidth(250); // Adjusted for smaller sections
+        section.setStyle("-fx-background-color: #4f2a70; -fx-background-radius: 15;");
+
+        // Apply darker shadow effect to the section
+        section.setEffect(new javafx.scene.effect.DropShadow(8, Color.DARKGRAY));  // Darker gray shadow
+
+        Label title = new Label(titleText);
+        title.setFont(titleFont);
+        title.setTextFill(Color.WHITE);
+
+        Label content = new Label(contentText);
+        content.setFont(textFont);
+        content.setTextFill(Color.WHITE);
+
+        section.getChildren().addAll(title, content);
+
+        return section;
+    }
+
+    /**
+     * Determines the rank based on the user's score.
+     * @param score The user's score.
+     * @return A string representing the user's rank.
+     */
     private String calculateRank(int score) {
         if (score >= 0 && score <= 20) {
             return "Noob";
