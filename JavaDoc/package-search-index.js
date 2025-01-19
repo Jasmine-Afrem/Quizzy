@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"com.jasmine.quizzy","l":"com.jasmine.quizzy"}];updateSearchResults();
