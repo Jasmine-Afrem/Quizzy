@@ -3,6 +3,8 @@
 ### Afrem Jasmine-Emilia
 
 ![Quizzy](https://github.com/user-attachments/assets/75bf1167-3075-451b-bb4e-fcc35d4ecb0d)
+![Quizzy](https://home/jasmine/Downloads/Quizzy.gif)
+
 
 
 ## Descriere
