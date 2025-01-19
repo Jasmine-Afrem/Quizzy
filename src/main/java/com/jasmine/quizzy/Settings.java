@@ -9,6 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -188,8 +191,10 @@ public class Settings {
                 params.add(email);
             }
             if (!password.isEmpty()) {
+                // Hash the new password before saving
+                String hashedPassword = hashPassword(password);
                 sql.append("password = ?, ");
-                params.add(password);
+                params.add(hashedPassword);
             }
             // Remove the trailing comma and space
             sql.setLength(sql.length() - 2);
@@ -211,6 +216,27 @@ public class Settings {
         } catch (SQLException ex) {
             ex.printStackTrace();
             CustomAlert.showAlert("An error occurred while updating your account.");
+        }
+    }
+
+    /**
+     * Hashes the user's password using the SHA-256 algorithm for secure storage.
+     *
+     * @param password The password to be hashed.
+     * @return The hashed password as a hexadecimal string.
+     */
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashBytes) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();  // Return hashed password as a hexadecimal string
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
