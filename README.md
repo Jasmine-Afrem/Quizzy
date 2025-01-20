@@ -1,4 +1,4 @@
-# ![Quizzy](https://github.com/user-attachments/assets/75bf1167-3075-451b-bb4e-fcc35d4ecb0d)  
+# ![Quizzy](https://github.com/Jasmine-Afrem/Quizzy/blob/main/src/main/resources/Quizzy.png)  
 ## **Quizzy** - Your Trivia Game 🎮  
 ### Afrem Jasmine-Emilia 🧠
 
@@ -8,7 +8,7 @@
 
 **Quizzy** is an engaging trivia game designed to test and enrich your general knowledge in an interactive and enjoyable way. Explore fascinating facts from various fields, ranging from science and history to art and geography. **Quizzy** offers you the chance to push your limits, improve with each game, and even challenge your friends in a friendly competition to see who knows the most secrets of the world! 🌍
 
-![Quizzy](https://github.com/Programare-III-2024-2025/p3-proiect-gr2-Jasmine-Afrem/blob/main/Quizzy.gif?raw=true)
+![Quizzy](https://github.com/Jasmine-Afrem/Quizzy/blob/main/Quizzy.gif)
 
 ---
 
