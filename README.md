@@ -1,6 +1,7 @@
-# ![Quizzy](https://github.com/Jasmine-Afrem/Quizzy/blob/main/src/main/resources/Quizzy.png)  
+
 ## **Quizzy** - Your Trivia Game 🎮  
 ### Afrem Jasmine-Emilia 🧠
+# ![Quizzy](https://github.com/Jasmine-Afrem/Quizzy/blob/main/src/main/resources/Quizzy.png)  
 
 ---
 
