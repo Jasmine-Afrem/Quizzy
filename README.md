@@ -10,6 +10,7 @@
 **Quizzy** is an engaging trivia game designed to test and enrich your general knowledge in an interactive and enjoyable way. Explore fascinating facts from various fields, ranging from science and history to art and geography. **Quizzy** offers you the chance to push your limits, improve with each game, and even challenge your friends in a friendly competition to see who knows the most secrets of the world! 🌍
 
 ![Quizzy](https://github.com/Jasmine-Afrem/Quizzy/blob/main/Quizzy.gif)
+Credits for the logo: [biaqwe](https://github.com/biaqwe)
 
 ---
 
